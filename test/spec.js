@@ -25,6 +25,7 @@ describe('Test extractor', () => {
 
     it('should extract name', function (done) {
         assert.equal("Ruslan Mikhalev", extractor.extractName("Ruslan Mikhalev guest@chest.one +4"));
+        assert.equal("Ruslan Mikhalev", extractor.extractName("Ruslan Mikhalev"));
         done()
     });
 

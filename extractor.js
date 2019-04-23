@@ -22,6 +22,7 @@ function extractName(str) {
             buffer += ` ${entries[i]}`;
         }
     }
+    return buffer.trim();
 }
 
 module.exports = {extractExtras, extractEmail, extractName};
