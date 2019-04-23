@@ -1,0 +1,25 @@
+{
+  "name": "wedding-scheduler",
+  "version": "0.0.1",
+  "description": "Daemon scheduler for wedding",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DNAlchemist/wedding-scheduler.git"
+  },
+  "author": "Mikhalev Ruslan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DNAlchemist/wedding-scheduler/issues"
+  },
+  "homepage": "https://github.com/DNAlchemist/wedding-scheduler#readme",
+  "dependencies": {
+    "assert": "^1.4.1",
+    "axios": "^0.18.0",
+    "mocha": "^6.1.4",
+    "node-schedule": "^1.3.2"
+  }
+}
