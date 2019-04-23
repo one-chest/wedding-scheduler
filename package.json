@@ -4,7 +4,8 @@
   "description": "Daemon scheduler for wedding",
   "main": "index.js",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha test",
+    "service": "node index.js"
   },
   "repository": {
     "type": "git",

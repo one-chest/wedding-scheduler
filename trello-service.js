@@ -1,8 +1,12 @@
 const axios = require('axios');
 const extractor = require('./extractor');
 
-function parseToObj(name) {
-    throw new Error("Not implemented")
+function parseToObj(str) {
+    return {
+        name: extractor.extractName(str),
+        extras: extractor.extractExtras(str),
+        email: extractor.extractEmail(str)
+    }
 }
 
 function updateGuests() {
