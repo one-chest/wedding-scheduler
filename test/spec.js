@@ -4,10 +4,10 @@ describe('Test extractor', () => {
 
     const extractor = require('../extractor');
     it('should extract extra', function (done) {
-        assert.equal("+4", extractor.extractExtras("Гомер Симпсон +4 guest@chest.one"));
-        assert.equal("+4", extractor.extractExtras("Гомер Симпсон guest@chest.one +4"));
-        assert.equal("+4", extractor.extractExtras("guest@chest.one Гомер Симпсон +4"));
-        assert.equal("+4", extractor.extractExtras("+4 guest@chest.one Гомер Симпсон  "));
+        assert.equal(4, extractor.extractExtras("Гомер Симпсон +4 guest@chest.one"));
+        assert.equal(4, extractor.extractExtras("Гомер Симпсон и Мардж Симпсон guest@chest.one +4"));
+        assert.equal(4, extractor.extractExtras("guest@chest.one Гомер Симпсон +4"));
+        assert.equal(4, extractor.extractExtras("+4 guest@chest.one Гомер Симпсон  "));
         done()
     });
 

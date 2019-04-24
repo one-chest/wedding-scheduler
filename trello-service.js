@@ -4,18 +4,11 @@ const guestService = require('./guest-service');
 
 const url = process.env.FETCH_TRELLO_CARDS_URL;
 
-function extrasToNum(extras) {
-    if (!extras) {
-        return undefined;
-    }
-    return parseInt(extras);
-}
-
 function parseToObj(id, cardName, cardDesc) {
     return {
         cardId: id,
         name: extractor.extractName(cardName),
-        extras: extrasToNum(extractor.extractExtras(cardName)),
+        extras: extractor.extractExtras(cardName),
         email: extractor.extractEmail(cardDesc),
         phone: extractor.extractPhoneNumber(cardDesc),
         greeting: extractor.extractGreeting(cardDesc)

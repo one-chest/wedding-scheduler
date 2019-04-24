@@ -1,3 +1,11 @@
+
+function extrasToNum(extras) {
+    if (!extras) {
+        return undefined;
+    }
+    return parseInt(extras);
+}
+
 function extractExtras(str) {
     const strikes = str.match(/\+\s?[1-4]/g);
     if (!strikes || strikes.length === 0 || strikes[0] === str) {
@@ -5,7 +13,8 @@ function extractExtras(str) {
     } else if (strikes.length > 1) {
         console.warn(`Card with name "${str}" have many extra guests!`)
     }
-    return strikes[0].replace(/ /g, '');
+
+    return extrasToNum(strikes[0].replace(/ /g, ''));
 }
 
 function extractEmail(str) {
