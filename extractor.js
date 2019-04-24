@@ -16,7 +16,7 @@ function extractName(str) {
     let buffer = "";
     const entries = str.split(" ");
     for(let i = 0; i < entries.length; i++) {
-        if(entries[i].indexOf("@") > 0 || entries[i].indexOf("+") > 0) {
+        if(entries[i].indexOf("@") > -1 || entries[i].indexOf("+") > -1) {
             return buffer.trim();
         } else {
             buffer += ` ${entries[i]}`;
