@@ -25,4 +25,14 @@ function extractName(str) {
     return buffer.trim();
 }
 
-module.exports = {extractExtras, extractEmail, extractName};
+function extractPhoneNumber(str) {
+    const strikes = str.match(/\+7\d{10}/g);
+    if (!strikes || strikes.length === 0) {
+        return undefined;
+    } else if (strikes.length > 1) {
+        console.warn(`Card with name "${str}" have many phone numbers!`)
+    }
+    return strikes[0].replace(/ /g, '');
+}
+
+module.exports = {extractExtras, extractEmail, extractName, extractPhoneNumber};

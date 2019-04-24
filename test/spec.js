@@ -39,4 +39,13 @@ describe('Test extractor', () => {
         done()
     });
 
+    it('should extract phone number', function (done) {
+        assert.equal("+79139139139", extractor.extractPhoneNumber("Ruslan Mikhalev +4 +79139139139 guest@chest.one"));
+        done()
+    });
+
+    it('should undefined if no phone number', function (done) {
+        assert.equal(undefined, extractor.extractPhoneNumber("Ruslan Mikhalev +4 guest@chest.one"));
+        done()
+    });
 });
