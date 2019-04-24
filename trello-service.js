@@ -1,5 +1,8 @@
 const axios = require('axios');
 const extractor = require('./extractor');
+const guestService = require('./guest-service');
+
+const url = process.env.FETCH_TRELLO_CARDS_URL;
 
 function extrasToNum(extras) {
     if (!extras) {
@@ -18,14 +21,37 @@ function parseToObj(id, cardName, cardDesc) {
     }
 }
 
+function findCard(cardId, serviceInfo) {
+    const a = serviceInfo.filter(fromService => fromService.cardId === cardId);
+    if (a) {
+        return a[0];
+    }
+}
+
+function updateCards(fromTrello, fromService) {
+    if (!fromService) {
+        return guestService.saveGuest(fromTrello);
+    }
+}
+
 function updateGuests() {
-    throw new Error("Not implemented")
+    Promise.all([fetchGuests(), guestService.fetchGuests()])
+        .then(values => {
+            const [trelloInfo, serviceInfo] = values;
+
+            trelloInfo.forEach(fromTrello => {
+                const fromService = findCard(fromTrello.cardId, serviceInfo);
+                return updateCards(fromTrello, fromService);
+            });
+        }).catch(console.error);
 }
 
 function fetchGuests() {
     return axios.get(url)
-        .then(response => response.data
-            .map(card => parseToObj(card.name, card.desc))
+        .then(response => {
+                return response.data
+                    .map(card => parseToObj(card.id, card.name, card.desc));
+            }
         )
 }
 
