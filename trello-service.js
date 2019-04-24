@@ -5,7 +5,8 @@ function parseToObj(str) {
     return {
         name: extractor.extractName(str),
         extras: extractor.extractExtras(str),
-        email: extractor.extractEmail(str)
+        email: extractor.extractEmail(str),
+        phone: extractor.extractPhoneNumber(str),
     }
 }
 
