@@ -11,7 +11,7 @@ function extractExtras(str) {
     const grammarConjunctions = str.split(" и ").length - 1;
     if ((!strikes || strikes.length === 0 || strikes[0] === str) && grammarConjunctions === 0) {
         return undefined;
-    } else if (strikes.length > 1) {
+    } else if (strikes && strikes.length > 1) {
         console.warn(`Card with name "${str}" have many extra guests!`)
     }
 
