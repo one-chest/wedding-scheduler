@@ -1,6 +1,6 @@
 function extractExtras(str) {
     const strikes = str.match(/\+\s?[1-4]/g);
-    if (!strikes || strikes.length === 0) {
+    if (!strikes || strikes.length === 0 || strikes[0] == str) {
         return undefined;
     } else if (strikes.length > 1) {
         console.warn(`Card with name "${str}" have many extra guests!`)

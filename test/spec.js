@@ -11,6 +11,11 @@ describe('Test extractor', () => {
         done()
     });
 
+    it('should undefined if no extras', function (done) {
+        assert.equal(undefined, extractor.extractExtras("Ruslan Mikhalev guest@chest.one"));
+        done()
+    });
+
     it('should extract extra with space between plus and number', function (done) {
         assert.equal("+4", extractor.extractExtras("guest@chest.one + 4 Ruslan Mikhalev  "));
         done()
