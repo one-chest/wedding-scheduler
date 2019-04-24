@@ -1,10 +1,17 @@
 const axios = require('axios');
 const extractor = require('./extractor');
 
+function extrasToNum(extras) {
+    if (!extras) {
+       return undefined;
+    }
+    return parseInt(extras);
+}
+
 function parseToObj(cardName, cardDesc) {
     return {
         name: extractor.extractName(cardName),
-        extras: extractor.extractExtras(cardName),
+        extras: extrasToNum(extractor.extractExtras(cardName)),
         email: extractor.extractEmail(cardDesc),
         phone: extractor.extractPhoneNumber(cardDesc),
     }
