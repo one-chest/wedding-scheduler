@@ -1,6 +1,6 @@
 function extractExtras(str) {
     const strikes = str.match(/\+\s?[1-4]/g);
-    if (!strikes || strikes.length === 0 || strikes[0] == str) {
+    if (!strikes || strikes.length === 0 || strikes[0] === str) {
         return undefined;
     } else if (strikes.length > 1) {
         console.warn(`Card with name "${str}" have many extra guests!`)
@@ -9,7 +9,7 @@ function extractExtras(str) {
 }
 
 function extractEmail(str) {
-    return str.split(" ").find(it => it.indexOf("@") > 1);
+    return str.replace("\\n", " ").split(" ").find(it => it.indexOf("@") > 1);
 }
 
 function extractName(str) {

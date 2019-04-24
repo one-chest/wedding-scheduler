@@ -28,6 +28,12 @@ describe('Test extractor', () => {
         done()
     });
 
+    it('should extract email with line break', function (done) {
+        assert.equal("guest@chest.one", extractor.extractEmail("guest@chest.one\\n+79139139139"));
+        assert.equal("guest@chest.one", extractor.extractEmail("+79139139139\\nguest@chest.one"));
+        done()
+    });
+
     it('should undefined if no email', function (done) {
         assert.equal(undefined, extractor.extractEmail("Ruslan Mikhalev +4"));
         done()
@@ -42,6 +48,12 @@ describe('Test extractor', () => {
 
     it('should extract phone number', function (done) {
         assert.equal("+79139139139", extractor.extractPhoneNumber("Ruslan Mikhalev +4 +79139139139 guest@chest.one"));
+        done()
+    });
+
+    it('should extract phone number with line break', function (done) {
+        assert.equal("+79139139139", extractor.extractPhoneNumber("guest@chest.one\\n+79139139139"));
+        assert.equal("+79139139139", extractor.extractPhoneNumber("+79139139139\\nguest@chest.one"));
         done()
     });
 

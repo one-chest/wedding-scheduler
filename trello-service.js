@@ -1,12 +1,12 @@
 const axios = require('axios');
 const extractor = require('./extractor');
 
-function parseToObj(str) {
+function parseToObj(cardName, cardDesc) {
     return {
-        name: extractor.extractName(str),
-        extras: extractor.extractExtras(str),
-        email: extractor.extractEmail(str),
-        phone: extractor.extractPhoneNumber(str),
+        name: extractor.extractName(cardName),
+        extras: extractor.extractExtras(cardName),
+        email: extractor.extractEmail(cardDesc),
+        phone: extractor.extractPhoneNumber(cardDesc),
     }
 }
 
@@ -17,8 +17,7 @@ function updateGuests() {
 function fetchGuests() {
     return axios.get(url)
         .then(response => response.data
-            .map(it => it.name)
-            .map(it => parseToObj(it))
+            .map(card => parseToObj(card.name, card.desc))
         )
 }
 
