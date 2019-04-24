@@ -43,6 +43,7 @@ describe('Test extractor', () => {
         assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон guest@chest.one +4"));
         assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон"));
         assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон +4"));
+        assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон и Мардж Симпсон guest@chest.one +4"));
         done()
     });
 

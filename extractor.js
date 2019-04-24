@@ -34,7 +34,12 @@ function extractGreeting(str) {
 function extractName(str) {
     let buffer = "";
     const entries = str.split(" ");
-    for(let i = 0; i < entries.length; i++) {
+    if (entries.length < 2) {
+        console.error(`Too short name: ${str}`);
+        return str;
+    }
+
+    for(let i = 0; i < 2; i++) {
         if(entries[i].indexOf("@") > -1 || entries[i].indexOf("+") > -1) {
             return buffer.trim();
         } else {
