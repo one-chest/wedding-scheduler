@@ -8,13 +8,16 @@ function extrasToNum(extras) {
 
 function extractExtras(str) {
     const strikes = str.match(/\+\s?[1-4]/g);
-    if (!strikes || strikes.length === 0 || strikes[0] === str) {
+    const grammarConjunctions = str.split(" и ").length - 1;
+    if ((!strikes || strikes.length === 0 || strikes[0] === str) && grammarConjunctions === 0) {
         return undefined;
     } else if (strikes.length > 1) {
         console.warn(`Card with name "${str}" have many extra guests!`)
     }
 
-    return extrasToNum(strikes[0].replace(/ /g, ''));
+    const extras = strikes && strikes.length > 0 ? extrasToNum(strikes[0].replace(/ /g, '')) : 0;
+
+    return grammarConjunctions + extras;
 }
 
 function extractEmail(str) {
