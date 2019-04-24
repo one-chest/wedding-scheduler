@@ -28,6 +28,11 @@ describe('Test extractor', () => {
         done()
     });
 
+    it('should undefined if no email', function (done) {
+        assert.equal(undefined, extractor.extractEmail("Ruslan Mikhalev +4"));
+        done()
+    });
+
     it('should extract name', function (done) {
         assert.equal("Ruslan Mikhalev", extractor.extractName("Ruslan Mikhalev guest@chest.one +4"));
         assert.equal("Ruslan Mikhalev", extractor.extractName("Ruslan Mikhalev"));
