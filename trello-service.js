@@ -3,13 +3,14 @@ const extractor = require('./extractor');
 
 function extrasToNum(extras) {
     if (!extras) {
-       return undefined;
+        return undefined;
     }
     return parseInt(extras);
 }
 
-function parseToObj(cardName, cardDesc) {
+function parseToObj(id, cardName, cardDesc) {
     return {
+        cardId: id,
         name: extractor.extractName(cardName),
         extras: extrasToNum(extractor.extractExtras(cardName)),
         email: extractor.extractEmail(cardDesc),
