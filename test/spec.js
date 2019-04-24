@@ -61,4 +61,15 @@ describe('Test extractor', () => {
         assert.equal(undefined, extractor.extractPhoneNumber("Ruslan Mikhalev +4 guest@chest.one"));
         done()
     });
+
+    it('should extract greeting', function (done) {
+        assert.equal("Ruslan Mikhalev", extractor.extractGreeting("Ruslan Mikhalev"));
+        done()
+    });
+
+    it('should extract greeting with extras', function (done) {
+        assert.equal("Ruslan Mikhalev", extractor.extractGreeting("Ruslan Mikhalev +4"));
+        assert.equal("Ruslan and Anastia", extractor.extractGreeting("Ruslan and Anastia +1"));
+        done()
+    });
 });

@@ -12,6 +12,13 @@ function extractEmail(str) {
     return str.replace("\\n", " ").split(" ").find(it => it.indexOf("@") > 1);
 }
 
+function extractGreeting(str) {
+    return str
+        .replace(/\+\s?[1-4]/g, "")
+        .replace(/ +(?= )/g,'')
+        .trim();
+}
+
 function extractName(str) {
     let buffer = "";
     const entries = str.split(" ");
@@ -35,4 +42,4 @@ function extractPhoneNumber(str) {
     return strikes[0].replace(/ /g, '');
 }
 
-module.exports = {extractExtras, extractEmail, extractName, extractPhoneNumber};
+module.exports = {extractExtras, extractEmail, extractName, extractPhoneNumber, extractGreeting};

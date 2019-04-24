@@ -18,6 +18,7 @@ function parseToObj(id, cardName, cardDesc) {
         extras: extrasToNum(extractor.extractExtras(cardName)),
         email: extractor.extractEmail(cardDesc),
         phone: extractor.extractPhoneNumber(cardDesc),
+        greeting: extractor.extractGreeting(cardDesc)
     }
 }
 
