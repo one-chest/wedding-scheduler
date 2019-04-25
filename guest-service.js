@@ -8,7 +8,6 @@ function saveGuest(data) {
 }
 
 function updateGuest(code, data) {
-    console.debug(`Updating guest ${data.name}`);
     return axios.patch(url, {code, ...data})
         .then(response => {
             if (response.data.modified === true) {

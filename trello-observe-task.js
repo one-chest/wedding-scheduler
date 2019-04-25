@@ -2,9 +2,11 @@ const scheduler = require('node-schedule');
 const trelloService = require("./trello-service");
 
 function schedule() {
-    throw new Error("Not implemented")
+    scheduler.scheduleJob('*/5 * * * * *', () => trelloService.updateGuests());
 }
 
-modules.exports = {
+console.log("===== Daemon started =====");
+
+module.exports = {
     schedule
 };

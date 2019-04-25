@@ -1,0 +1,1 @@
+require('./trello-observe-task').schedule();
