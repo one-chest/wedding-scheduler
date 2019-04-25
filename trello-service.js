@@ -41,7 +41,7 @@ function updateGuests() {
                 const fromService = findCard(fromTrello.cardId, serviceInfo);
                 return updateCards(fromTrello, fromService);
             });
-        }).catch(console.error);
+        }).catch(e => console.error(e.message));
 }
 
 function fetchGuests() {
