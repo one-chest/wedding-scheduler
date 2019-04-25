@@ -25,6 +25,10 @@ function findCard(cardId, serviceInfo) {
 function updateCards(fromTrello, fromService) {
     if (!fromService) {
         return guestService.saveGuest(fromTrello);
+    } else {
+        if (!fromService.approved) {
+            return guestService.updateGuest(fromService.code, fromTrello);
+        }
     }
 }
 
