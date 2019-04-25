@@ -14,6 +14,8 @@ function updateGuest(code, data) {
         .then(response => {
             if (response.data.modified === true) {
                 console.log(`${data.name} updated!`);
+            } else {
+                console.debug(`${data.name} has not changed.`);
             }
         });
 }
