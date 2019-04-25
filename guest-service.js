@@ -3,7 +3,6 @@ const axios = require('axios');
 const url = process.env.GUEST_URL;
 
 function saveGuest(data) {
-    console.debug(`Saving guest ${data.name}`);
     return axios.post(url, data)
         .then(response => console.log(`${response.data.name} saved!`));
 }
@@ -14,8 +13,6 @@ function updateGuest(code, data) {
         .then(response => {
             if (response.data.modified === true) {
                 console.log(`${data.name} updated!`);
-            } else {
-                console.debug(`${data.name} has not changed.`);
             }
         });
 }
