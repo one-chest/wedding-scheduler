@@ -71,6 +71,7 @@ describe('Test extractor', () => {
     it('should extract greeting with extras', function (done) {
         assert.equal("Гомер", extractor.extractGreeting("Симпсон Гомер +4"));
         assert.equal("Гомер и Мардж", extractor.extractGreeting("Симпсон Гомер и Симпсон Мардж +1"));
+        assert.equal("Гомер и Мардж", extractor.extractGreeting("Симпсон Гомер и Мардж +1"));
         done()
     });
 });
