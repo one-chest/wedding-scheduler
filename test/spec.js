@@ -4,27 +4,27 @@ describe('Test extractor', () => {
 
     const extractor = require('../extractor');
     it('should extract extra', function (done) {
-        assert.equal(4, extractor.extractExtras("Гомер Симпсон +4 guest@chest.one"));
-        assert.equal(5, extractor.extractExtras("Гомер Симпсон и Мардж Симпсон guest@chest.one +4"));
-        assert.equal(4, extractor.extractExtras("guest@chest.one Гомер Симпсон +4"));
-        assert.equal(4, extractor.extractExtras("+4 guest@chest.one Гомер Симпсон  "));
+        assert.equal(4, extractor.extractExtras("Симпсон Гомер +4 guest@chest.one"));
+        assert.equal(5, extractor.extractExtras("Симпсон Гомер и Симпсон Мардж guest@chest.one +4"));
+        assert.equal(4, extractor.extractExtras("guest@chest.one Симпсон Гомер +4"));
+        assert.equal(4, extractor.extractExtras("+4 guest@chest.one Симпсон Гомер  "));
         done()
     });
 
     it('should undefined if no extras', function (done) {
-        assert.equal(undefined, extractor.extractExtras("Гомер Симпсон guest@chest.one"));
+        assert.equal(undefined, extractor.extractExtras("Симпсон Гомер guest@chest.one"));
         done()
     });
 
     it('should extract extra with space between plus and number', function (done) {
-        assert.equal("+4", extractor.extractExtras("guest@chest.one + 4 Гомер Симпсон  "));
+        assert.equal("+4", extractor.extractExtras("guest@chest.one + 4 Симпсон Гомер  "));
         done()
     });
 
     it('should extract email', function (done) {
-        assert.equal("guest@chest.one", extractor.extractEmail("Гомер Симпсон guest@chest.one +4"));
-        assert.equal("guest@chest.one", extractor.extractEmail("Гомер Симпсон guest@chest.one second@chest.one +4"));
-        assert.equal("second@chest.one", extractor.extractEmail("Гомер Симпсон @guechest.one second@chest.one +4"));
+        assert.equal("guest@chest.one", extractor.extractEmail("Симпсон Гомер guest@chest.one +4"));
+        assert.equal("guest@chest.one", extractor.extractEmail("Симпсон Гомер guest@chest.one second@chest.one +4"));
+        assert.equal("second@chest.one", extractor.extractEmail("Симпсон Гомер @guechest.one second@chest.one +4"));
         done()
     });
 
@@ -35,20 +35,20 @@ describe('Test extractor', () => {
     });
 
     it('should undefined if no email', function (done) {
-        assert.equal(undefined, extractor.extractEmail("Гомер Симпсон +4"));
+        assert.equal(undefined, extractor.extractEmail("Симпсон Гомер +4"));
         done()
     });
 
     it('should extract name', function (done) {
-        assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон guest@chest.one +4"));
-        assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон"));
-        assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон +4"));
-        assert.equal("Гомер Симпсон", extractor.extractName("Гомер Симпсон и Мардж Симпсон guest@chest.one +4"));
+        assert.equal("Симпсон Гомер", extractor.extractName("Симпсон Гомер guest@chest.one +4"));
+        assert.equal("Симпсон Гомер", extractor.extractName("Симпсон Гомер"));
+        assert.equal("Симпсон Гомер", extractor.extractName("Симпсон Гомер +4"));
+        assert.equal("Симпсон Гомер", extractor.extractName("Симпсон Гомер и Симпсон Мардж guest@chest.one +4"));
         done()
     });
 
     it('should extract phone number', function (done) {
-        assert.equal("+79139139139", extractor.extractPhoneNumber("Гомер Симпсон +4 +79139139139 guest@chest.one"));
+        assert.equal("+79139139139", extractor.extractPhoneNumber("Симпсон Гомер +4 +79139139139 guest@chest.one"));
         done()
     });
 
@@ -59,18 +59,18 @@ describe('Test extractor', () => {
     });
 
     it('should undefined if no phone number', function (done) {
-        assert.equal(undefined, extractor.extractPhoneNumber("Гомер Симпсон +4 guest@chest.one"));
+        assert.equal(undefined, extractor.extractPhoneNumber("Симпсон Гомер +4 guest@chest.one"));
         done()
     });
 
     it('should extract greeting', function (done) {
-        assert.equal("Гомер Симпсон", extractor.extractGreeting("Гомер Симпсон"));
+        assert.equal("Гомер", extractor.extractGreeting("Симпсон Гомер"));
         done()
     });
 
     it('should extract greeting with extras', function (done) {
-        assert.equal("Гомер Симпсон", extractor.extractGreeting("Гомер Симпсон +4"));
-        assert.equal("Гомер Симпсон и Мардж Симпсон", extractor.extractGreeting("Гомер Симпсон и Мардж Симпсон +1"));
+        assert.equal("Гомер", extractor.extractGreeting("Симпсон Гомер +4"));
+        assert.equal("Гомер и Мардж", extractor.extractGreeting("Симпсон Гомер и Симпсон Мардж +1"));
         done()
     });
 });

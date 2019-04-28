@@ -25,10 +25,19 @@ function extractEmail(str) {
 }
 
 function extractGreeting(str) {
-    return str
+    const cleanStr = str
         .replace(/\+\s?[1-4]/g, "")
         .replace(/ +(?= )/g,'')
         .trim();
+    const names = cleanStr.split(' и ');
+
+    return names.map(name => {
+        const splited = name.split(" ");
+        if (splited.length > 1) {
+            return splited[1]
+        }
+        return name;
+    }).reduce((r, a) => r + ' и ' + a);
 }
 
 function extractName(str) {
